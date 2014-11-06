@@ -1,5 +1,15 @@
 # Automatic Cinema Controller
 
-**Installation**
+**Installation & Run**
 
-Open index.html in Firefox, Chrome or Safari. The whole www directory can be used with Cordova to build a Web-App for your Mobile.
+Open index.html in Firefox, Chrome or Safari. 
+
+**Cordova**
+
+The www directory can be placed into a Apache Cordova Project. It relies on the Ionic Framework.
+
+**Related Projects**
+
+- Apache Cordova
+- Ionic Framework
+- Paper.js
