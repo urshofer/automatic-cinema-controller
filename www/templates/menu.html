@@ -1,0 +1,46 @@
+<ion-side-menus>
+
+  <ion-pane ion-side-menu-content drag-content="false">
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="left">
+    <header class="bar bar-header">
+      <h1 class="title">Menu</h1>
+    </header>
+    <ion-content class="has-header has-footer" has-bouncing="false">
+      <ion-list>
+	  <div class="item range range-positive">
+		  <i class="icon ion-ios7-time-outline"></i>
+		  <input type="range" name="time" min="1" max="1800" ng-model="time" ng-change="changeTime(time)">
+		  {{formatted}}
+	  </div>
+        <ion-item nav-clear menu-close href="#/app/target">
+          Target
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/style">
+		  Style
+        </ion-item>	
+        <ion-item nav-clear menu-close href="#/app/content">
+		  Content
+        </ion-item>				
+        <ion-item nav-clear menu-close href="#/app/timeline">
+			Timeline
+        </ion-item>	
+        <ion-item nav-clear menu-close href="#/app/graph">
+			Graph
+        </ion-item>	
+      </ion-list>
+    </ion-content>
+	<div class="tabs">
+	  <a class="tab-item" nav-clear menu-close href="#/app/index">
+	    Home
+	  </a>
+	  <a class="tab-item" nav-clear menu-close href="#/app/settings">
+	    Settings
+	  </a>
+	</div>
+  </ion-side-menu>
+</ion-side-menus>

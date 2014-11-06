@@ -1,0 +1,181 @@
+<ion-view title="Settings">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon" ng-show="isunlocked"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon" ng-class="{true: 'ion-ios7-unlocked-outline', false: 'ion-ios7-locked-outline'}[isunlocked]" ng-click="unlock()"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header has-footer">
+	<ion-list>
+		<!-- *********************************************************************************************** -->
+		<div class="item bar item-divider bar-positive">
+			<h1 class="title">Lock Code</h1>
+		</div>
+		<div class="list list-inset" ng-controller="lock">
+		  <label class="item item-input">
+		    <input type="text" placeholder="Code" ng-model="lockcode" ng-value="lockcode" ng-change="savecode()">
+		  </label>
+		</div>
+		<!-- *********************************************************************************************** -->
+		<div class="item bar item-divider bar-positive">
+			<h1 class="title">Show</h1>
+			<button class="button button-icon icon ion-ios7-plus-outline" ng-click="add('show');"></a>
+		</div>
+	    <ion-item ng-repeat="data in options.shows" ng-class="{active: configuration.show==data[0]}" ng-click="configuration.show=data[0];change()">
+	      {{data[1]}}
+	      <ion-option-button class="button-assertive" ng-click="delete(data[1], 'show')">Delete</ion-option-button>
+	      <ion-option-button class="button-calm" ng-click="rename(data[1], 'show')">Rename</ion-option-button>
+	    </ion-item>				
+		<!-- *********************************************************************************************** -->
+		<div class="item bar item-divider bar-positive">
+			<h1 class="title">Channel</h1>
+			<button class="button button-icon icon ion-ios7-plus-outline" ng-click="add('channel');"></a>
+		</div>
+	    <ion-item ng-repeat="channel in channels" ng-class="{active: channel.status=='Close'}" ng-click="toggle(channel)">
+	      {{channel.name}}
+	      <ion-option-button class="button-assertive" ng-click="delete(channel.name, 'channel')">Delete</ion-option-button>
+	      <ion-option-button class="button-calm" ng-click="rename(channel.name, 'channel')">Rename</ion-option-button>
+	    </ion-item>
+		<!-- *********************************************************************************************** -->
+		<div class="item bar item-divider bar-positive">
+			<h1 class="title">Content</h1>
+			<button class="button button-icon icon ion-ios7-plus-outline" ng-click="add('content');"></a>
+		</div>
+	    <ion-item ng-repeat="data in options.content" ng-class="{active: configuration.content==data[0]}" ng-click="configuration.content=data[0];change()">
+	      {{data[1]}}
+	      <ion-option-button class="button-assertive" ng-click="delete(data[1], 'content')">Delete</ion-option-button>
+	      <ion-option-button class="button-calm" ng-click="rename(data[1], 'content')">Rename</ion-option-button>
+	    </ion-item>
+		<!-- *********************************************************************************************** -->
+		<div class="item bar item-divider bar-positive">
+			<h1 class="title">Style</h1>
+			<button class="button button-icon icon ion-ios7-plus-outline" ng-click="add('style');"></a>
+		</div>
+	    <ion-item ng-repeat="data in options.style" ng-class="{active: configuration.style==data[0]}" ng-click="configuration.style=data[0];change()">
+	      {{data[1]}}
+	      <ion-option-button class="button-assertive" ng-click="delete(data[1], 'style')">Delete</ion-option-button>
+	      <ion-option-button class="button-calm" ng-click="rename(data[1], 'style')">Rename</ion-option-button>
+	    </ion-item>
+		<!-- *********************************************************************************************** -->
+		<div class="item bar item-divider bar-positive">
+			<h1 class="title">Target</h1>
+			<button class="button button-icon icon ion-ios7-plus-outline" ng-click="add('target');"></a>
+		</div>
+	    <ion-item ng-repeat="data in options.target" ng-class="{active: configuration.target==data[0]}" ng-click="configuration.target=data[0];change()">
+	      {{data[1]}}
+	      <ion-option-button class="button-assertive" ng-click="delete(data[1], 'target')">Delete</ion-option-button>
+	      <ion-option-button class="button-calm" ng-click="rename(data[1], 'target')">Rename</ion-option-button>
+	    </ion-item>
+	</ion-list>
+  </ion-content>
+  <div class="bar bar-footer  bar-assertive">
+  	<div class="button-bar">
+  	  <a class="button button-clear" ng-click="loginPop(true)">Login</a>
+  	</div>
+  </div>
+</ion-view>
+
+<script id="addshow.html" type="text/ng-template">
+<div class="modal">
+	<ion-header-bar class="bar-light">
+		<button class="button button-clear button-positive" ng-click="close()">Close</button>
+		<h1 class="title">Add Show</h1>
+		<button class="button button-clear button-positive" ng-click="save('show')">Save</button>
+	</ion-header-bar>
+	<ion-content has-header="true">
+	<ion-list>
+		<ion-item class="item-text-wrap">
+		<p>This adds an Automatic Cinema show. Shows may contain various target and content definitions and act as container with the highest priority.</p>
+		</ion-item>
+		<label class="item item-input"><input type="text" placeholder="Project Name" ng-model="show_modal.data.name"></label>
+	</ion-list>
+	</ion-content>
+</div>
+</script>
+<script id="addstyle.html" type="text/ng-template">
+<div class="modal">
+	<ion-header-bar class="bar-light">
+		<button class="button button-clear button-positive" ng-click="close()">Close</button>
+		<h1 class="title">Add Style</h1>
+		<button class="button button-clear button-positive" ng-click="save('style')">Save</button>
+	</ion-header-bar>
+	<ion-content has-header="true">
+	<ion-list>
+		<ion-item class="item-text-wrap">
+		<p>This adds an Automatic Cinema style definition. Styles are used to control a narration.</p>
+		</ion-item>
+		<label class="item item-input"><input type="text" placeholder="Style Name" ng-model="style_modal.data.name"></label>
+	</ion-list>
+	</ion-content>
+</div>
+</script>
+<script id="addtarget.html" type="text/ng-template">
+<div class="modal">
+	<ion-header-bar class="bar-light">
+		<button class="button button-clear button-positive" ng-click="close()">Close</button>
+		<h1 class="title">Add Target</h1>
+		<button class="button button-clear button-positive" ng-click="save('target')">Save</button>
+	</ion-header-bar>
+	<ion-content has-header="true">
+	<ion-list>
+		<ion-item class="item-text-wrap">
+		<p>This adds an Automatic Cinema target definition. Targets define the starting point of a narration.</p>
+		</ion-item>
+		<label class="item item-input"><input type="text" placeholder="Target Name" ng-model="target_modal.data.name"></label>
+	</ion-list>
+	</ion-content>
+</div>
+</script>
+
+<script id="addcontent.html" type="text/ng-template">
+<div class="modal">
+	<ion-header-bar class="bar-light">
+		<button class="button button-clear button-positive" ng-click="close()">Close</button>
+		<h1 class="title">Add Content</h1>
+		<button class="button button-clear button-positive" ng-click="save('content')">Save</button>
+	</ion-header-bar>
+	<ion-content has-header="true">
+	<ion-list>
+		<ion-item class="item-text-wrap">
+		<p>This adds an Automatic Cinema ontology. Ontologies define the semantic relation between media data.</p>
+		</ion-item>
+		<label class="item item-input"><input type="text" placeholder="Content Name" ng-model="content_modal.data.name"></label>
+	</ion-list>
+	</ion-content>
+</div>
+</script>
+
+<script id="addchannel.html" type="text/ng-template">
+<div class="modal">
+	<ion-header-bar class="bar-light">
+		<button class="button button-clear button-positive" ng-click="close()">Close</button>
+		<h1 class="title">Add Channel</h1>
+		<button class="button button-clear button-positive" ng-click="save('channel')">Save</button>
+	</ion-header-bar>
+	<ion-content has-header="true">
+	<ion-list>
+		<ion-item class="item-text-wrap">
+		<p>This adds a channel to an Automatic Cinema Show. Please be careful, channels cannot be modified due to their restriction on certain file types.</p>
+		</ion-item>
+		<label class="item item-input"><input type="text" placeholder="Channel Name" ng-model="channel_modal.data.name"></label>
+		<label class="item item-input"><input type="text" placeholder="Suffices. i.e: mp3;m4a" ng-model="channel_modal.data.suffix"></label>
+		<label class="item item-select">
+			<select ng-model="channel_modal.data.typ">
+			  <option value="0">Video</option>
+			  <option value="1">Image</option>
+			  <option value="2">Music (Audio)</option>
+			  <option value="3">Voice (Audio)</option>
+			  <option value="4">Text</option>
+			</select>Type
+		</label>
+		<label class="item item-select">
+			<select ng-model="channel_modal.data.master">
+				<option value="-1">None</option>
+				<option ng-repeat="channel in channels" value="{{channel.name}}">{{channel.name}}</option>
+			</select>Slave of
+		</label>					
+		<ion-toggle ng-model="channel_modal.data.snap" toggle-class="toggle-positive">Snap</ion-toggle>
+	</ion-list>
+	</ion-content>
+</div>
+</script>

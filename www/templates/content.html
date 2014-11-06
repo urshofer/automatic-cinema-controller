@@ -1,0 +1,38 @@
+<ion-view title="Content">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon" ng-show="isunlocked"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon" ng-class="{true: 'ion-ios7-unlocked-outline', false: 'ion-ios7-locked-outline'}[isunlocked]" ng-click="unlock()"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header has-footer dark-bg" scroll="false" has-bouncing="false">
+	<div class="uploadlayer big" id="uploader">
+		<div class="bar bar-header bar-positive">
+			<h1 class="title" id="tit"></h1>
+			<button class="button button-icon icon ion-ios7-close-empty" id="uploader_close"></button>
+		</div>
+	    <ion-content class="has-header" scroll="false" padding="true" has-bouncing="false">
+			<div class="progress" id="progress"></div>
+			<div class="dimtags" id="dimtags"></div>
+		</ion-content>
+	</div>
+	<div class="ontology" id="ontology"></div>
+ <form method="post" id="uploadform" style="display:none" action="/" enctype="multipart/form-data">
+ 	<input type="hidden" id="add_dim" 	name="add_dim" value="">
+ 	<input type="hidden" id="add_x" 	name="add_x" value="">
+ 	<input type="hidden" id="add_y" 	name="add_y" value="">
+ 	<input type="file" id="url" name="url">
+ </form>
+ 
+  </ion-content>
+  <div class="bar bar-footer bar-dark">
+    <button ng-click="addDimension()" class="button button-icon ion-ios7-plus-empty"></button>
+    <button ng-click="deleteDimension()" class="button button-icon ion-ios7-minus-empty"></button>
+	<button ng-click="renameDimension()" class="button button-icon ion-ios7-compose-outline"></button>		
+	<div class="button-bar" ng-repeat="button in dimensions">
+  	  <a class="button button-clear" ng-click="switchDimension($index)">{{button}}</a>
+  	</div>
+	<button ng-click="swapArrow()" class="button button-icon ion-ios7-arrow-thin-right"></button>	
+  </div>
+  
+</ion-view>

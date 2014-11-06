@@ -1,0 +1,19 @@
+<ion-view title="Style">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon" ng-show="isunlocked"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon" ng-class="{true: 'ion-ios7-unlocked-outline', false: 'ion-ios7-locked-outline'}[isunlocked]" ng-click="unlock()"></button>
+  </ion-nav-buttons> 
+  <ion-content class="has-header has-footer dark-bg" scroll="false" has-bouncing="false">
+	<div class="cloudmatrix" id="stylematrix"></div>
+	<input type="hidden" name="data" value="" id="savestyle">
+  </ion-content>
+  
+  <div class="bar bar-footer bar-dark">
+  	<div class="button-bar" ng-repeat="button in channels">
+  	  <a class="button button-clear" ng-click="openChannel($index)">{{button}}</a>
+  	</div>
+  </div>
+  
+</ion-view>

@@ -1,0 +1,12 @@
+<ion-view title="Target">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon" ng-show="isunlocked"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon" ng-class="{true: 'ion-ios7-unlocked-outline', false: 'ion-ios7-locked-outline'}[isunlocked]" ng-click="unlock()"></button>
+  </ion-nav-buttons>  
+  <ion-content class="has-header dark-bg" scroll="false" has-bouncing="false">
+	<div class="targetmatrix" id="target"></div>
+	<input type="hidden" name="data" value="" id="savetarget">
+  </ion-content>
+</ion-view>
