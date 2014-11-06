@@ -1,10 +1,8 @@
 # Automatic Cinema Controller
 
-<a href="http://www.automatic-cinema.com">automatic-cinema.com</a>
-
 **Installation & Run**
 
-Open index.html in Firefox, Chrome or Safari. You need a fully functional Automatic Cinema Server as a prerequisite for this controller.
+Open index.html in Firefox, Chrome or Safari. You need a fully functional Automatic Cinema Server as a prerequisite for this controller. You will be asked first to log into your server. You need to know the address (i.e. http://localhost:3000) and the username and the password. An account will be added the first time you log in with a username. Don't forget the password, there is currently no recover function. Passwords are stored encrypted in the database, so it's also hard to get it directly there.
 
 **Cordova**
 
