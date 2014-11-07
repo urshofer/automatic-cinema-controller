@@ -14,3 +14,7 @@ The www directory can be placed into a Apache Cordova Project. It relies on the 
 - Ionic Framework
 - Paper.js
 - Mootools
+
+**Build**
+
+If you want to build the javascript files, theres a grunt task: first, install the grunt dependencies with ```npm install``` and then issue a ```grunt``` command. Grunt will produce a minified version of the controller libs.

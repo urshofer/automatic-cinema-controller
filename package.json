@@ -1,0 +1,28 @@
+{
+  "name": "automatic-cinema-controller",
+  "version": "0.0.1",
+  "description": "Automatic Cinema Controller can be run in the browser or added to a cordova project.",
+  "main": "index.html",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/urshofer/automatic-cinema-controller.git"
+  },
+  "keywords": [
+    "automatic",
+    "cinema"
+  ],
+  "author": "Urs Hofer",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/urshofer/automatic-cinema-controller/issues"
+  },
+  "homepage": "https://github.com/urshofer/automatic-cinema-controller",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.10.0"
+  }
+}
