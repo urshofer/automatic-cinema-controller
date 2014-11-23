@@ -10,6 +10,13 @@ module.exports = function(grunt) {
       build: {
         src: ['lib/paper-core.min.js','lib/MooTools-Core-1.5.1.js','lib/MooTools-More-1.5.1-compressed.js','src/**.js'],
         dest: 'www/js/v3.js/<%= pkg.name %>.min.js'
+      },
+      build: {
+		options: {
+		      mangle: false
+		},
+        src: ['lib/app.js','lib/services.js','lib/controllers.js'],
+        dest: 'www/js/app.min.js'
       }/*,
 	  copy: {
 		  files: [
@@ -25,6 +32,7 @@ module.exports = function(grunt) {
 	  }
 	}
   });
+  
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
