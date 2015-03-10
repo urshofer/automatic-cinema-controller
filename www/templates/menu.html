@@ -32,6 +32,11 @@
         <ion-item nav-clear menu-close href="#/app/graph">
 			Graph
         </ion-item>	
+	  <div class="item range range-positive">
+		  <i class="icon ion-ios7-timer-outline"></i>
+		  <input type="range" name="preroll" min="0" max="1000" ng-model="preroll" ng-change="changePreroll(preroll)">
+		  {{preroll + "ms"}}
+	  </div>
       </ion-list>
     </ion-content>
 	<div class="tabs">

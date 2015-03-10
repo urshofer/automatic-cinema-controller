@@ -29,10 +29,11 @@
     <button ng-click="addDimension()" class="button button-icon ion-ios7-plus-empty"></button>
     <button ng-click="deleteDimension()" class="button button-icon ion-ios7-minus-empty"></button>
 	<button ng-click="renameDimension()" class="button button-icon ion-ios7-compose-outline"></button>		
+	<button ng-click="swapArrow()" class="button button-icon ion-ios7-arrow-thin-right"></button>	
 	<div class="button-bar" ng-repeat="button in dimensions">
   	  <a class="button button-clear" ng-click="switchDimension($index)">{{button}}</a>
   	</div>
-	<button ng-click="swapArrow()" class="button button-icon ion-ios7-arrow-thin-right"></button>	
+    <button ng-click="refreshData()" class="button button-icon" ng-class="{true: 'ion-ios7-reloading', false: 'ion-ios7-reload'}[automaticrefresh]"></button>		
   </div>
   
 </ion-view>
