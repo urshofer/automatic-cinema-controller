@@ -34,7 +34,7 @@
 	    <ion-item ng-repeat="channel in channels" ng-class="{active: channel.status=='Close'}" ng-click="toggle(channel)">
 	      {{channel.name}}
 	      <ion-option-button class="button-assertive" ng-click="delete(channel.name, 'channel')">Delete</ion-option-button>
-	      <ion-option-button class="button-calm" ng-click="rename(channel.name, 'channel')">Rename</ion-option-button>
+	      <ion-option-button class="button-calm" ng-click="editchannel(channel)">Edit</ion-option-button>
 	    </ion-item>
 		<!-- *********************************************************************************************** -->
 		<div class="item bar item-divider bar-positive">
@@ -150,15 +150,15 @@
 	<ion-header-bar class="bar-light">
 		<button class="button button-clear button-positive" ng-click="close()">Close</button>
 		<h1 class="title">Add Channel</h1>
-		<button class="button button-clear button-positive" ng-click="save('channel')">Save</button>
+		<button class="button button-clear button-positive" ng-click="save('channel')">{{channel_modal.data.update?"Update":"Save"}}</button>
 	</ion-header-bar>
 	<ion-content has-header="true">
 	<ion-list>
 		<ion-item class="item-text-wrap">
-		<p>This adds a channel to an Automatic Cinema Show. Please be careful, channels cannot be modified due to their restriction on certain file types.</p>
+		<p>This adds a channel to an Automatic Cinema Show. Be careful when editing the file suffix since this changes the affiliated files for a channel.</p>
 		</ion-item>
 		<label class="item item-input"><input type="text" placeholder="Channel Name" ng-model="channel_modal.data.name"></label>
-		<label class="item item-input"><input type="text" placeholder="Suffices. i.e: mp3;m4a" ng-model="channel_modal.data.suffix"></label>
+		<label class="item item-input"><input type="text" placeholder="Suffices. i.e: mp3,m4a" ng-model="channel_modal.data.suffix"></label>
 		<label class="item item-select">
 			<select ng-model="channel_modal.data.typ">
 			  <option value="0">Video</option>
@@ -171,10 +171,10 @@
 		<label class="item item-select">
 			<select ng-model="channel_modal.data.master">
 				<option value="-1">None</option>
-				<option ng-repeat="channel in channels" value="{{channel.name}}">{{channel.name}}</option>
+				<option ng-repeat="channel in channels" ng-selected="channel_modal.data.master==channel.name" value="{{channel.name}}">{{channel.name}}</option>
 			</select>Slave of
 		</label>					
-		<ion-toggle ng-model="channel_modal.data.snap" toggle-class="toggle-positive">Snap</ion-toggle>
+		<ion-toggle ng-model="channel_modal.data.snap" ng-checked="channel_modal.data.snap" toggle-class="toggle-positive">Snap</ion-toggle>
 	</ion-list>
 	</ion-content>
 </div>
