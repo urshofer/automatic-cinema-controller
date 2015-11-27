@@ -1,0 +1,28 @@
+{
+  "name": "automatic-cinema-controller",
+  "version": "1.0.0",
+  "description": "Automatic Cinema Controller Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/urshofer/automatic-cinema-controller.git"
+  },
+  "keywords": [
+    "Automatic Cinema",
+    "Video",
+    "Rokfor",
+    "Urs Hofer"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/urshofer/automatic-cinema-controller/issues"
+  },
+  "homepage": "http://www.automatic-cinema.com",
+  "devDependencies": {
+    "electron-prebuilt": "^0.35.0"
+  }
+}
